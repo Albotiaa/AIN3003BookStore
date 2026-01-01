@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstore-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstore-app
+  template:
+    metadata:
+      labels:
+        app: bookstore-app
+    spec:
+      containers:
+      - name: bookstore-app
+        image: bookstore-app:latest
+        # Never pull from registry, use local image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        # MongoDB connection from ConfigMap
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_HOST
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_PORT
+        - name: MONGO_DB
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_DB
+        - name: MONGO_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_USER
+        - name: MONGO_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGO_PASSWORD

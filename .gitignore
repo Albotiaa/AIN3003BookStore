@@ -1,0 +1,19 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+python-app/venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# Docker empty folders
+docker/
+
+# IDE
+.idea/
+.vscode/

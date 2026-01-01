@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  # MongoDB connection settings
+  MONGO_HOST: "mongodb-service"
+  MONGO_PORT: "27017"
+  MONGO_DB: "BOOKSTORE"
+  MONGO_USER: "admin"
+  MONGO_PASSWORD: "admin"
